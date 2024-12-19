@@ -262,8 +262,6 @@ func startLocalRunner(params bootstrap.LocalRunnerParams) error {
 		}
 	}
 
-	log.Info("Starting local job runner...")
-
 	runner, err := bootstrap.GetLocalRunner(params)
 	if err != nil {
 		return err
@@ -277,8 +275,8 @@ func getLocalRunnerConfig(configDir string) *runner.Config {
 	logFilePath := filepath.Join(configDir, "runner.log")
 
 	return &runner.Config{
-		Id:           "local",
-		Name:         "local",
+		Id:           bootstrap.LOCAL_RUNNER_ID,
+		Name:         bootstrap.LOCAL_RUNNER_ID,
 		ProvidersDir: providersDir,
 		LogFile:      logs.GetDefaultLogFileConfig(logFilePath),
 	}
